@@ -1,20 +1,5 @@
-ul {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    height: 10vh;
-    width: 60vw;
-    padding: 0;
-    margin: 0 5vw 0 7vw;
-  }
-
-ul li {
-    margin: 0 2vw 0 2vw;
-    font-size: 16pt;
-}
-
 .link{
-text-decoration: none;
-color: inherit;
-font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
 }

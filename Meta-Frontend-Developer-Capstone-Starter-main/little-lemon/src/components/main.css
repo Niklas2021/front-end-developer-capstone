@@ -1,0 +1,42 @@
+.background{
+    background-color: #134533;
+    display: flex;
+    height: 320px;
+}
+
+.left h1{
+    color: orange;
+    margin:0;
+}
+
+.left h2{
+    margin-top:0;
+    margin-bottom:20px;
+    font-size:18pt;
+}
+
+.left{
+    color: white;
+}
+
+.img{
+    display: flex;
+    height:300px;
+    width:250px;
+    border-radius: 10px;
+    margin-top:50px;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px; /* Passen Sie die Höhe nach Bedarf an */
+}
+
+.card-description{
+    height: 120px;
+    overflow: hidden;
+}
+
+.card{
+    margin-top: 20px;
+}
