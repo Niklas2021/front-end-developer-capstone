@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Main from './components/main';
 import Header from './components/header';
+import Nav from './components/nav';
 
 const App = () => {
   return (
     <Router>
+      <Nav />
       <Header/>
       <Main/>
 

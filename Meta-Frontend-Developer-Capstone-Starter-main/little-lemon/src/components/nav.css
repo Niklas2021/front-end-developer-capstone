@@ -1,5 +1,10 @@
-.link{
-  text-decoration: none;
-  color: inherit;
-  font-weight: bold;
+.navbar{
+  padding: 10px 13%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.logo{
+  min-width: 200px;
 }
