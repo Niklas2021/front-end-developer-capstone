@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Card} from 'react-bootstrap';
 import {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 
-const Main = () => {
+const Main = (props) => {
     const [showImg, setShowImg] = useState(false);
 
     useEffect(() => {
@@ -58,7 +58,7 @@ const Main = () => {
                             The famous greek salad of crispy lettuce peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosmary.
                         </Card.Text>
                         <Card.Text>Preis: $19.99</Card.Text>
-                        <Button variant="primary">Bestellen</Button>
+                        <Button variant="warning" style={{"font-weight": "bold"}}>Bestellen</Button>
                         </Card.Body>
                     </Card>
                     </Col>
@@ -71,7 +71,7 @@ const Main = () => {
                             Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.
                         </Card.Text>
                         <Card.Text>Preis: $29.99</Card.Text>
-                        <Button variant="primary">Bestellen</Button>
+                        <Button variant="warning" style={{"font-weight": "bold"}} onClick={props.show}>Bestellen</Button>
                         </Card.Body>
                     </Card>
                     </Col>
@@ -84,7 +84,7 @@ const Main = () => {
                             This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.
                         </Card.Text>
                         <Card.Text>Preis: $39.99</Card.Text>
-                        <Button variant="primary">Bestellen</Button>
+                        <Button variant="warning" style={{"font-weight": "bold"}}>Bestellen</Button>
                         </Card.Body>
                     </Card>
                     </Col>

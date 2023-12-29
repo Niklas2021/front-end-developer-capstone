@@ -7,6 +7,7 @@ import SuccessModal from './components/mod';
 import Main from './components/main';
 import Nav from './components/nav';
 import Booking from './components/booking';
+import Footer from './components/footer'
 
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
   
   const initialState = {availableTimes: fetchAPI(new Date())};
   const [state, dispatch] = useReducer(updateTimes, initialState);
+  const [text, setText] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   
   function updateTimes(state, date){
@@ -50,8 +52,8 @@ const App = () => {
 
   function submitForm(formData){
     if(submitAPI(formData)){
-      // anstelle dessen werden wir dann einfach ein POPUp schmeißen
       setShowSuccessModal(true);
+      setText("The reservation was succesfull.")
     }
   }
 
@@ -59,25 +61,33 @@ const App = () => {
     setShowSuccessModal(false);
   };
 
+  const buysucces = () => {
+    setShowSuccessModal(true);
+    setText("The order has been added to your basket.")
+    // do more to add it to the basket
+  };
+
+
   return (
     <>
-     <SuccessModal show={showSuccessModal} handleClose={handleSuccessModalClose} />
+     <SuccessModal show={showSuccessModal} handleClose={handleSuccessModalClose} text={text}/>
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main show={buysucces}/>} />
           <Route path="/about" element={About} />
           <Route path="/menu" element={Menu} />
           <Route path="/booking" element={<Booking availableTimes={state} dispatch={dispatch} submitForm={submitForm}/>} />
           <Route path="/order" element={OrderOnline} />
           <Route path="/login" element={Login} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
 };
 
-// Komponenten für die einzelnen Seiten
+// components for the pages
 
 const About = () => {
   return <h1>About Page</h1>;

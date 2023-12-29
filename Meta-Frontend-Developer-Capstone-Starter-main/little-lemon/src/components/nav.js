@@ -13,17 +13,13 @@ const Nav = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            // Überprüfen der Bildschirmgröße und Aktualisieren des State
-            setShowIcon(window.innerWidth >= 1025); // Hier kannst du die Breakpoint-Größe nach Bedarf anpassen
+            setShowIcon(window.innerWidth >= 1025);
         };
 
-        // Event-Listener für das Resize-Event hinzufügen
         window.addEventListener('resize', handleResize);
 
-        // Initialen Aufruf für die erste Überprüfung der Bildschirmgröße
         handleResize();
 
-        // Event-Listener bei Komponentenzerstörung entfernen
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -67,7 +63,7 @@ const Nav = () => {
                                 <Link to="/booking" className='link'>Reservations</Link>
                             </Col>
                             <Col className="col d-flex align-items-center justify-content-center">
-                                <Link to="/order" className='link'>Order Online</Link>
+                                <Link to="/order" className='link' style={{"white-space": "nowrap"}}>Order Online</Link>
                             </Col>
                             <Col className="col d-flex align-items-center justify-content-center">
                                 <Link to="/login" className='link'>Login</Link>

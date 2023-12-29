@@ -1,58 +1,75 @@
 import React, { useState } from 'react';
-import { Button, Form,  Container, Col, Row} from 'react-bootstrap';
+import { Button, Container, Col, Row} from 'react-bootstrap';
 import './bookingForm.css';
+import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+
+const validationSchema = Yup.object().shape({
+    chooseDate: Yup.string().required('You have to choose a Date'),
+    chooseTime: Yup.string().required('You have to choose a Time'),
+    chooseGuests: Yup.string().required('You have to specify the number of guests')
+})
+
+const initialValues = {
+    chooseDate: '',
+    chooseTime: '',
+    chooseGuests: '',
+};
 
 const BookingForm = (props) => {
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
-    const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        props.submitForm(e);
-    }
-
-    const handleChange = (e) => {
-        setDate(e);
-        props.dispatch(e);
+    const handleSubmit = (values, { setSubmitting, resetForm }) => {
+        props.submitForm(values);
+        resetForm();
+        setSubmitting(false);
     }
 
     return(
-        <>
-            <form onSubmit={handleSubmit}>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} >
+            <Form>
                 <fieldset>
-                    <Container>
+                    <Container style={{"margin-top" : "50px", "font-weight": "bold"}}>
                         <Row>
                             <Col>
                                 <label htmlFor='book-date'>Choose Date:</label>
                             </Col>
                             <Col>
-                            <Form.Control type="date" name="datepic" placeholder="DateRange" value={date} id="book-date" onChange={(e) => handleChange(e.target.value)}/>
+                            <Field type="date" id="chooseDate" name="chooseDate" />
+                            <ErrorMessage name="chooseDate" component="div" className="error-message" style={{ color: 'red' }}/>
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <label htmlFor='book-time'>Choose Time:</label>
-                            </Col>
-                            <Col>
-                                <select id='book-time' className='form-control' value={time} onChange={(e) => setTime(e.target.value)}>
-                                {props.availableTimes && Array.isArray(props.availableTimes) ? (
-                                    props.availableTimes.map(availableTime => (
-                                    <option key={availableTime}>{availableTime}</option>
-                                    ))
+                        <Col>
+                            <label htmlFor='book-time'>Choose Time:</label>
+                        </Col>
+                        <Col>
+                            <Field as='select' id='chooseTime' name='chooseTime'>
+                                <option value=''>Select a Time</option>
+                                {props.availableTimes.availableTimes && Array.isArray(props.availableTimes.availableTimes) ? (
+                                props.availableTimes.availableTimes.map(availableTimes => (
+                                    <option key={availableTimes}>{availableTimes}</option>
+                                ))
                                 ) : (
-                                    <option value="">Select a Time</option> )}
-                                </select>
-                            </Col>
+                                 <option value=''>Select a Time</option>
+                                )}
+                            </Field>
+                            <ErrorMessage name='chooseTime' component='div' className='error-message' style={{ color: 'red' }}/>
+                        </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <label htmlFor='book-guests'>Number of Guests:</label>
-                            </Col>
-                            <Col>
-                                <input className="form-control" id="book-guests" min="1" type="number" placeholder="Number" onChange={(e) => setGuests(e.target.value)} value={guests} />
-                            </Col>
+                        <Col>
+                            <label htmlFor='book-guests'>Number of Guests:</label>
+                        </Col>
+                        <Col>
+                            <Field
+                                type='number'
+                                id='chooseGuests'
+                                name='chooseGuests'
+                                min='1'
+                            />
+                            <ErrorMessage name='chooseGuests' component='div' className='error-message' style={{ color: 'red' }}/>
+                        </Col>
                         </Row>
                         <Row>
                             <Col>
@@ -73,13 +90,13 @@ const BookingForm = (props) => {
                         </Row>
                         <Row>
                             <Col>
-                                <Button color="warning" className="btn-warning" style={{"font-weight" : "bold"}} aria-label='On Click' type='submit'>Reserve Now</Button>
+                                <Button color="warning" className="btn-warning" type='submit' style={{"font-weight": "bold"}}>Reserve Now</Button>
                             </Col>
                         </Row>
                     </Container>
                 </fieldset>
-            </form>
-        </>
+            </Form>
+        </Formik>
     );
 };
 

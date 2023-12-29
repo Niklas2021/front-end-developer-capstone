@@ -2,18 +2,18 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-const SuccessModal = ({ show, handleClose }) => {
+const SuccessModal = ({ show, handleClose, text}) => {
     return (
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Erfolg!</Modal.Title>
+            <Modal.Title>Success!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            Die Aktion wurde erfolgreich abgeschlossen.
+            {text}
         </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-            Schließen
+            Close
             </Button>
         </Modal.Footer>
         </Modal>
