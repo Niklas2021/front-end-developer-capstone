@@ -40,12 +40,11 @@ const App = () => {
       return true;
   }
 
-  
   const initialState = {availableTimes: fetchAPI(new Date())};
   const [state, dispatch] = useReducer(updateTimes, initialState);
   const [text, setText] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  
+
   function updateTimes(state, date){
     return fetchAPI(new Date());
   }

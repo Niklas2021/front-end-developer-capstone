@@ -50,7 +50,7 @@ const Main = (props) => {
                 </Row>
                 <Row style={{"margin-top": "50px"}}>
                     <Col md={4}>
-                    <Card>
+                    <Card data-testid="main-1">
                         <Card.Img variant="top" src="greeksalad.jpg" />
                         <Card.Body>
                         <Card.Title>Greek Salad</Card.Title>
@@ -58,7 +58,7 @@ const Main = (props) => {
                             The famous greek salad of crispy lettuce peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosmary.
                         </Card.Text>
                         <Card.Text>Preis: $19.99</Card.Text>
-                        <Button variant="warning" style={{"font-weight": "bold"}}>Bestellen</Button>
+                        <Button variant="warning" style={{"font-weight": "bold"}} onClick={props.show}>Bestellen</Button>
                         </Card.Body>
                     </Card>
                     </Col>
@@ -84,7 +84,7 @@ const Main = (props) => {
                             This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.
                         </Card.Text>
                         <Card.Text>Preis: $39.99</Card.Text>
-                        <Button variant="warning" style={{"font-weight": "bold"}}>Bestellen</Button>
+                        <Button variant="warning" style={{"font-weight": "bold"}} onClick={props.show}>Bestellen</Button>
                         </Card.Body>
                     </Card>
                     </Col>
