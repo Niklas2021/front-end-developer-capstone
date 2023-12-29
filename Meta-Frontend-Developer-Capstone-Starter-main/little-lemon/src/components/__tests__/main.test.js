@@ -11,6 +11,8 @@ test('should render main comp', () => {
         </MemoryRouter>
     );
 
+    // unit Tests!
+
     const mainElement = screen.getByTestId('main-1');
     expect(mainElement).toBeInTheDocument();
     expect(mainElement).toHaveTextContent('Greek Salad')
