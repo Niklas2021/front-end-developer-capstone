@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Card} from 'react-bootstrap';
 import {useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
 
-const Body = () => {
+const Main = () => {
     const [showImg, setShowImg] = useState(false);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Body = () => {
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>We are a family owned Mediterranean restaurant,  focused on traditional recipies served with a modern twist.</p>
-                    <Link to="/reservations"><Button color="warning" className="btn-warning" style={{"font-weight": "bold"}}>Reserve a Table</Button></Link>
+                    <Link to="/booking"><Button color="warning" className="btn-warning" style={{"font-weight": "bold"}}>Reserve a Table</Button></Link>
                 </Col>
                 {showImg && (
                     <Col className="col-3 offset-2">
@@ -94,4 +94,4 @@ const Body = () => {
     )
 }
 
-export default Body;
+export default Main;

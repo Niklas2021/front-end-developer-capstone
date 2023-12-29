@@ -64,7 +64,7 @@ const Nav = () => {
                                 <Link to="/menu" className='link'>Menu</Link>
                             </Col>
                             <Col className="col d-flex align-items-center justify-content-center">
-                                <Link to="/reservations" className='link'>Reservations</Link>
+                                <Link to="/booking" className='link'>Reservations</Link>
                             </Col>
                             <Col className="col d-flex align-items-center justify-content-center">
                                 <Link to="/order" className='link'>Order Online</Link>
